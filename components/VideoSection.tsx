@@ -91,22 +91,6 @@ const VideoSection: React.FC = () => {
             </video>
           )}
         </div>
-
-        {/* YouTube Link */}
-        <div className="p-4 bg-gray-50 border-t border-gray-100 flex justify-center">
-          <a 
-            href="https://youtu.be/NGbz73Ocgs4?si=qKaxdjm0smp_DSHN" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 text-gray-600 hover:text-red-600 transition-colors font-medium text-sm group"
-          >
-            <div className="bg-white p-1 rounded-full shadow-sm group-hover:shadow border border-gray-200">
-              <Youtube size={20} className="text-red-600" />
-            </div>
-            <span>Watch on YouTube</span>
-            <ExternalLink size={14} className="opacity-50 group-hover:opacity-100 transition-opacity" />
-          </a>
-        </div>
       </div>
     </section>
   );

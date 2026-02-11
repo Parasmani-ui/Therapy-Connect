@@ -71,11 +71,11 @@ const Footer: React.FC = () => {
               </li>
               <li className="flex items-start gap-2">
                 <Mail size={16} className="mt-0.5 text-primary flex-shrink-0" />
-                <span>support@therapyconnect.in</span>
+                <span>info@therapyconnect.in</span>
               </li>
               <li className="flex items-start gap-2">
                 <MapPin size={16} className="mt-0.5 text-primary flex-shrink-0" />
-                <span>Mumbai, Maharashtra, India</span>
+                <span>Gurgaon, India</span>
               </li>
             </ul>
           </div>
@@ -84,7 +84,7 @@ const Footer: React.FC = () => {
         {/* Bottom Bar */}
         <div className="border-t border-gray-700 mt-8 pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-gray-500 text-sm">
-            © {new Date().getFullYear()} Therapy Connect. All rights reserved.
+            © {new Date().getFullYear()} Therapy Connect Pvt Ltd.
           </p>
           <div className="flex gap-6 text-gray-500 text-sm">
             <a href="#" className="hover:text-primary transition">Privacy Policy</a>

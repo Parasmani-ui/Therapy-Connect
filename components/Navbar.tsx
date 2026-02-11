@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Search, Globe, User } from 'lucide-react';
+import { Menu, X, Search, User } from 'lucide-react';
+
+
+const translateIcon = '/translate.png';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
+  const navScrollRef = useRef<HTMLDivElement>(null);
 
   const navLinks = [
     { name: 'Ayurved', path: '/ayurved', img: '/ayurved.svg' },
@@ -27,20 +31,41 @@ const Navbar: React.FC = () => {
             </Link>
           </div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex lg:items-center lg:space-x-1">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                to={link.path}
-                className={`nav-link ${isActive(link.path) ? 'active text-primary' : 'text-gray-600'}`}
+          {/* Desktop Navigation (horizontal scroll with arrows) */}
+          <div className="hidden lg:flex lg:items-center flex-1 min-w-0 mx-4">
+            <div
+              ref={navScrollRef}
+              className="flex items-center gap-2 overflow-x-auto whitespace-nowrap scroll-smooth py-1 mx-auto"
+            >
+              <button
+                type="button"
+                aria-label="Scroll navigation left"
+                onClick={() => navScrollRef.current?.scrollBy({ left: -200, behavior: 'smooth' })}
+                className="w-8 h-8 rounded-full bg-white border border-gray-200 shadow-sm flex items-center justify-center text-gray-400 hover:text-primary hover:border-primary transition flex-shrink-0"
               >
-                <div className="w-10 h-10 flex items-center justify-center mb-1">
-                  <img src={link.img} alt={link.name} className="w-9 h-9 object-contain" />
-                </div>
-                <span className="text-xs font-medium whitespace-nowrap">{link.name}</span>
-              </Link>
-            ))}
+                <span className="text-lg">‹</span>
+              </button>
+              {navLinks.map((link) => (
+                <Link
+                  key={link.name}
+                  to={link.path}
+                  className={`nav-link ${isActive(link.path) ? 'active text-primary' : 'text-gray-600'}`}
+                >
+                  <div className="w-10 h-10 flex items-center justify-center mb-1">
+                    <img src={link.img} alt={link.name} className="w-9 h-9 object-contain" />
+                  </div>
+                  <span className="text-xs font-medium whitespace-nowrap">{link.name}</span>
+                </Link>
+              ))}
+              <button
+                type="button"
+                aria-label="Scroll navigation right"
+                onClick={() => navScrollRef.current?.scrollBy({ left: 200, behavior: 'smooth' })}
+                className="w-8 h-8 rounded-full bg-white border border-gray-200 shadow-sm flex items-center justify-center text-gray-400 hover:text-primary hover:border-primary transition flex-shrink-0"
+              >
+                <span className="text-lg">›</span>
+              </button>
+            </div>
           </div>
 
           {/* Right Side Icons */}
@@ -53,7 +78,7 @@ const Navbar: React.FC = () => {
             
             {/* Language */}
             <button className="flex flex-col items-center text-gray-500 hover:text-primary transition px-2">
-              <Globe size={22} />
+              <img src={translateIcon} alt="English" className="w-4 h-4" />
               <span className="text-xs mt-1">English</span>
             </button>
             
@@ -100,10 +125,10 @@ const Navbar: React.FC = () => {
             <div className="border-t border-gray-100 mt-2 pt-2 flex items-center gap-4 px-3 py-2">
               <button className="flex items-center gap-2 text-gray-500">
                 <Search size={20} />
-                <span>Search</span>
+                {/* <span>Search</span> */}
               </button>
               <button className="flex items-center gap-2 text-gray-500">
-                <Globe size={20} />
+                <img src={translateIcon} alt="English" className="w-4 h-4" />
                 <span>English</span>
               </button>
             </div>

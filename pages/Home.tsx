@@ -5,25 +5,112 @@ import VideoSection from '../components/VideoSection';
 // Health concerns data with local SVG icons
 const healthConcerns = [
   { name: 'Covid', icon: '/covid.svg' },
-  { name: 'Immunity', icon: '/immunity_fe5ca5b286.svg' },
+  { name: 'Immunity', icon: '/immunity.svg' },
   { name: 'Cough / Fever', icon: '/cough.svg' },
-  { name: 'Sexual Health', icon: '/sexual_5d808a5316.svg' },
+  { name: 'Sexual Health', icon: '/sexual.svg' },
   { name: 'Depression', icon: '/depression.svg' },
-  { name: 'Sleeplessness', icon: '/sleeplessness_c59f2ffdfd.svg' },
+  { name: 'Sleeplessness', icon: '/sleeplessness.svg' },
   { name: 'Anxiety & hypertension', icon: '/anxiety.svg' },
-  { name: 'Stress', icon: '/stress_3152ebd566.svg' },
+  { name: 'Stress', icon: '/stress.svg' },
   { name: 'Acidity', icon: '/acidity.svg' },
   { name: 'Hair Fall', icon: '/hairfall.svg' },
-  { name: 'Digestion', icon: '/digestion.svg' },
-  { name: 'Skin Problem', icon: '/skinproblem_7ea2ccb930.svg' },
+  { name: 'Digestion', icon: '/digestion.svg' }, 
+  { name: 'Skin Problem', icon: '/skinproblem.svg' },
 ];
 
+// Therapy concerns data with local SVG icons
+const therapyConcerns = [
+  { 
+    name: 'Ayurved', 
+    icon: '/ayurved_green.svg',
+    users: 'Users: 1234',
+    description: 'A holistic healthcare healing body',
+  },
+  { 
+    name: 'Homeopathy', 
+    icon: '/homeopathy_green.svg',
+    users: 'Users: 1678',
+    description: 'A gentle and enduring care for mind',
+  },
+  { 
+    name: 'Naturopathy', 
+    icon: '/naturopathy_green.svg',
+    users: 'Users: 1012',
+    description: 'All about the healing by nature',
+  },
+  { 
+    name: 'Yoga & Physiotherapy', 
+    icon: '/yoga_green.svg',
+    users: 'Users: 1456',
+    description: 'Modern yet conventional therapy',
+  },
+  { 
+    name: 'Diet & Nutrition', 
+    icon: '/Diet_and_Nutrition_green.svg',
+    users: 'Users: 789',
+    description: 'A science of life, a touch of nature',
+  },
+];
 // Action buttons data
 const actionButtons = [
-  { title: 'Health Package & Family Doctor', icon: '/health_package_family_189411b6f1-670x712.svg' },
-  { title: 'Book Diagnostics', icon: '/heart_ab2c729f79.svg' },
-  { title: 'Order Medicine', icon: '/homeopathy_504943fbec.svg' },
-  { title: 'Wellness Solutions', icon: '/yoga.svg' },
+  { title: 'Health Package & Family Doctor', icon: '/Doctor_image.png' },
+  { title: 'Book Diagnostics', icon: '/diagnostics.svg' },
+  { title: 'Order Medicine', icon: '/medicine.svg' },
+  { title: 'Wellness Solutions', icon: '/wellness.svg' },
+];
+
+// True Services data
+const trueServices = [
+  { 
+    title: 'Online Consultation', 
+    subtitle: 'Video · Audio · Chat',
+    image: '/female doctor.jpg'
+  },
+  { 
+    title: 'Offline Consultation', 
+    subtitle: 'At Clinic · Home Visit',
+    image: '/Doctor_image.png'
+  },
+  { 
+    title: 'Order Medicines', 
+    subtitle: 'Delivery at doorstep',
+    image: '/medical_store.jpg'
+  },
+  { 
+    title: 'Book Diagnostics', 
+    subtitle: 'Laboratory near you',
+    image: '/test_tube.jpg'
+  },
+  { 
+    title: 'Health Package', 
+    subtitle: 'For you & family',
+    image: '/lady.webp'
+  },
+];
+
+// Articles and News data
+const articles = [
+  {
+    date: '19 June 2022',
+    title: 'How to choose the right pediatrician: 8 steps',
+    description: 'A step by step guide towards the betterment of health',
+    image: '/thumbnail_article1_4433601e429cbb1b6bf4_cf817c13ea-504x419.png',
+    isFeatured: false,
+  },
+  {
+    date: '19 June 2022',
+    title: 'How your blood type reveals about your health',
+    description: 'Red color is not enough for a healthy blood',
+    image: '/thumbnail_article2_5922b436c9e1ba08e73c_e098a6f776-504x419.png',
+    isFeatured: true,
+  },
+  {
+    date: '19 June 2022',
+    title: '5 natural ways to lower surgery chance',
+    description: 'Minor changes to your life style to make difference',
+    image: '/thumbnail_article3_c49719b5490b5736ee35_c0811f7dfe-504x419.png',
+    isFeatured: false,
+  },
 ];
 
 const Home: React.FC = () => {
@@ -120,57 +207,12 @@ const Home: React.FC = () => {
 
           {/* Hero Image */}
           <div className="relative hidden lg:block">
-            {/* Background decorative elements */}
-            <div className="absolute top-0 right-0 w-full h-full">
-              <div className="absolute top-10 right-10 w-48 h-48 bg-green-200 rounded-full mix-blend-multiply filter blur-xl opacity-50 animate-blob"></div>
-              <div className="absolute top-20 left-10 w-48 h-48 bg-orange-200 rounded-full mix-blend-multiply filter blur-xl opacity-50 animate-blob animation-delay-2000"></div>
-            </div>
-            
-            {/* Doctor Image */}
-            <div className="relative z-10 flex justify-center items-end">
-              <img 
-                src="/Doctor_image.png" 
-                alt="Doctor" 
-                className="object-contain max-h-[450px] rounded-2xl"
-                onError={(e) => {
-                  // Fallback to online image if local not found
-                  (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80";
-                }}
+            <div className="relative z-10 flex items-end">
+              <img
+                src="/Doctor_image.png"
+                alt="Therapy Connect hero background"
+                className="h-[450px] object-cover rounded-2xl shadow-xl"
               />
-              
-              {/* Floating Consultation Badge */}
-              {showConsultBadge && (
-                <div className="absolute bottom-16 right-4 bg-white p-4 rounded-xl shadow-xl border border-gray-100 max-w-[220px] animate-bounce-slow">
-                  <button 
-                    onClick={() => setShowConsultBadge(false)}
-                    className="absolute -top-2 -right-2 w-6 h-6 bg-gray-100 rounded-full flex items-center justify-center text-gray-500 hover:bg-gray-200 transition"
-                  >
-                    <X size={14} />
-                  </button>
-                  <div className="flex items-start gap-3">
-                    <div className="flex-1">
-                      <h4 className="font-bold text-gray-800 text-sm">FREE Consultation</h4>
-                      <p className="text-xs text-gray-500 mt-1">with Therapy Connect doctors</p>
-                      <a href="#" className="text-primary text-xs font-bold mt-2 inline-flex items-center gap-1 hover:underline">
-                        Read more <ChevronRight size={12} />
-                      </a>
-                    </div>
-                    <img 
-                      src="/Doctor_image.png" 
-                      alt="Doctor" 
-                      className="w-12 h-12 rounded-full object-cover border-2 border-green-100"
-                      onError={(e) => {
-                        (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80";
-                      }}
-                    />
-                  </div>
-                </div>
-              )}
-
-              {/* Navigation Arrow */}
-              <button className="absolute right-0 top-1/2 -translate-y-1/2 w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center text-gray-400 hover:text-primary transition border border-gray-100">
-                <ChevronRight size={24} />
-              </button>
             </div>
           </div>
         </div>
@@ -222,6 +264,40 @@ const Home: React.FC = () => {
             ))}
           </div>
 
+          
+          <div className="text-center mb-10">
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-800">
+              Know your <span className="text-secondary">Therapy</span>
+            </h2>
+            <p className="text-gray-500 mt-3 text-sm sm:text-base">
+              A holistic healthcare experience where you choose what suits you
+            </p>
+            <div className="w-16 h-1 bg-secondary mx-auto mt-4 rounded-full"></div>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+            {therapyConcerns.map((item, idx) => (
+              <div key={idx} className="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 text-center hover:shadow-md transition">
+                <div className="w-16 h-16 mx-auto rounded-full bg-secondary-light flex items-center justify-center mb-4">
+                  <img 
+                    src={item.icon} 
+                    alt={item.name} 
+                    className="w-10 h-10 object-contain"
+                  />
+                </div>
+                <h3 className="text-base font-semibold text-gray-800">{item.name}</h3>
+                <p className="text-xs text-gray-400 mt-1">{item.users}</p>
+                <p className="text-sm text-gray-500 mt-3">{item.description}</p>
+                <button className="mt-4 w-9 h-9 rounded-full bg-gray-900 text-white flex items-center justify-center mx-auto hover:bg-primary transition">
+                  <ChevronRight size={18} />
+                </button>
+              </div>
+            ))}
+          </div>
+
+          <p className="text-gray-500 mt-4 text-sm sm:text-base text-center">
+            Need our help for choosing the right therapy for you? <span className="text-secondary">Connect to Advisor</span>
+          </p>
           {/* Navigation dots */}
           <div className="flex justify-center items-center gap-2 mt-8">
             <button className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 hover:border-primary hover:text-primary transition">
@@ -238,6 +314,100 @@ const Home: React.FC = () => {
           </div>
         </div>
       </section>
+
+      {/* Offering our true services */}
+      <section className="py-12 px-4 bg-gray-50">
+        <div className="max-w-6xl mx-auto">
+          <div className="mb-8">
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-800">
+              Offering our <span className="text-secondary">true services</span>
+            </h2>
+            <p className="text-gray-500 mt-3 text-sm sm:text-base max-w-3xl">
+              An online healthcare platform offering modern ways of looking at healthcare delivery in combination with traditional therapies
+            </p>
+            <div className="w-16 h-1 bg-secondary mt-4 rounded-full"></div>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+            {trueServices.map((service, idx) => (
+              <div key={idx} className="group cursor-pointer">
+                <div className="relative overflow-hidden rounded-xl aspect-[4/5] mb-3">
+                  <img 
+                    src={service.image} 
+                    alt={service.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/70 to-transparent"></div>
+                  <div className="absolute bottom-3 left-3 right-3">
+                    <h3 className="text-white font-semibold text-sm leading-tight">{service.title}</h3>
+                  </div>
+                </div>
+                <p className="text-gray-500 text-xs text-center">{service.subtitle}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Articles and News */}
+      <section className="py-12 px-4 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <div className="mb-8">
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-800">
+              Articles and News on  <br></br><span className="text-secondary">Health & Wellness</span>
+            </h2>
+            <div className="w-16 h-1 bg-secondary mt-4 rounded-full"></div>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {articles.map((article, idx) => (
+              <article key={idx} className="group">
+                <div className="rounded-2xl overflow-hidden shadow-sm border border-gray-100 bg-white transition-colors duration-200 group-hover:bg-secondary">
+                  <div className="relative">
+                    <img 
+                      src={article.image} 
+                      alt={article.title}
+                      className="w-full h-48 object-cover"
+                    />
+                  </div>
+                  <div className="p-5 text-gray-700 transition-colors duration-200 group-hover:text-white">
+                    <p className="text-xs text-gray-500 transition-colors duration-200 group-hover:text-white/80">{article.date}</p>
+                    <h3 className="mt-2 font-semibold text-base leading-snug">{article.title}</h3>
+                    <p className="mt-2 text-sm text-gray-500 transition-colors duration-200 group-hover:text-white/90">
+                      {article.description}
+                    </p>
+                    <button className="mt-4 text-sm font-semibold text-primary transition-colors duration-200 group-hover:text-white">
+                      Read More
+                    </button>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {showConsultBadge && (
+        <div className="fixed bottom-14 right-6 z-50">
+          <div className="bg-white p-4 rounded-xl shadow-xl border border-gray-100 max-w-[220px]">
+            <button 
+              onClick={() => setShowConsultBadge(false)}
+              className="absolute -top-2 -right-2 w-6 h-6 bg-gray-100 rounded-full flex items-center justify-center text-gray-500 hover:bg-gray-200 transition"
+            >
+              <X size={14} />
+            </button>
+            <div className="flex items-start gap-3">
+              <div className="flex-1">
+                <h4 className="font-bold text-gray-800 text-sm">FREE Consultation</h4>
+                <p className="text-xs text-gray-500 mt-1">with Therapy Connect doctors</p>
+                <a href="#" className="text-primary text-xs font-bold mt-2 inline-flex items-center gap-1 hover:underline">
+                  Read more <ChevronRight size={12} />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Password Protected Video Section */}
       <VideoSection />
